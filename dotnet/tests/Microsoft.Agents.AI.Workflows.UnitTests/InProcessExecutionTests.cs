@@ -111,7 +111,7 @@ public class InProcessExecutionTests
         await using StreamingRun streamingRun = await InProcessExecution.StreamAsync(workflow2, new List<ChatMessage> { inputMessage });
         await streamingRun.TrySendMessageAsync(new TurnToken(emitEvents: true));
 
-        List<WorkflowEvent> streamingEvents = new();
+        List<WorkflowEvent> streamingEvents = [];
         await foreach (WorkflowEvent evt in streamingRun.WatchStreamAsync())
         {
             streamingEvents.Add(evt);
@@ -194,7 +194,5 @@ public class InProcessExecutionTests
     /// <summary>
     /// Simple thread implementation for SimpleTestAgent.
     /// </summary>
-    private sealed class SimpleTestAgentThread : InMemoryAgentThread
-    {
-    }
+    private sealed class SimpleTestAgentThread : InMemoryAgentThread;
 }

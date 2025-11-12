@@ -19,9 +19,7 @@ namespace Microsoft.Agents.AI.Workflows.Declarative.IntegrationTests.Framework;
 /// </summary>
 public abstract class IntegrationTest : IDisposable
 {
-    private IConfigurationRoot? _configuration;
-
-    protected IConfigurationRoot Configuration => this._configuration ??= InitializeConfig();
+    protected IConfigurationRoot Configuration => field ??= InitializeConfig();
 
     public Uri TestEndpoint { get; }
 
